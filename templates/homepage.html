@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+{% block body %}
+<h2>Домашняя странциа</h2>
+<p>Добро пожаловать</p>
+{% for post in posts %}
+<h3>{{ post.user.username|urlize }}</h3>
+<p class="message-content">{{ post.content|urlize }}</p>
+<h5>{{ post.pub_date|urlize }}</h5>
+{% endfor %}
+{% endblock %}
+</html>

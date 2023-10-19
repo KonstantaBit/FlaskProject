@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>ГМ</title>
+</head>
+<body>
+<div class=page>
+    <h1><a href="{{ url_for('homepage') }}">Горящая мусорка</a></h1>
+    <div class=metanav>
+        {% if not session.logged_in %}
+        <a href="{{ url_for('login') }}">Войти</a>
+        |
+        <a href="{{ url_for('join') }}">Зарегистрироваться</a>
+        {% else %}
+        <a href="{{ url_for('create') }}">Сделать пост</a>
+        |
+        <a href="{{ url_for('logout') }}">Выйти</a>
+        {% endif %}
+    </div>
+    {% for message in get_flashed_messages() %}
+    <div class=flash>{{ message }}</div>
+    {% endfor %}
+    {% block body %}{% endblock %}
+</div>
+</body>
+</html>
